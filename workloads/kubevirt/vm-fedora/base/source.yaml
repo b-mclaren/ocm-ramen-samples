@@ -6,4 +6,4 @@ metadata:
 spec:
   source:
     registry:
-      url: "docker://quay.io/fedora/fedora:43-x86_64"
+      url: "docker://quay.io/containerdisks/fedora:43"
