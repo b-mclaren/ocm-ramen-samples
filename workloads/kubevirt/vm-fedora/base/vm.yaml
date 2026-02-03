@@ -42,7 +42,7 @@ spec:
           persistentVolumeClaim:
             claimName: fedora-root-disk
         - name: cloud-init
-          cloudInitNoCloud:
+          cloudInitConfigDrive:
             userData: |
               #cloud-config
               user: fedora
