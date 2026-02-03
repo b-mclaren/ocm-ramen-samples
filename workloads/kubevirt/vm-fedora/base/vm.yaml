@@ -44,7 +44,8 @@ spec:
         - name: cloud-init
           cloudInitNoCloud:
             userData: |
-              #cloud-confg
+              #cloud-config
               user: fedora
               password: regionalDR
               chpasswd: { expire: False }
+              ssh_pwauth: True
