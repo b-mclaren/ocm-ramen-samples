@@ -14,7 +14,7 @@ patches:
   # Use internal ceph cluster.
   - target:
       kind: PersistentVolumeClaim
-      name: root-disk
+      name: fedora-root-disk
     patch: |-
       - op: replace
         path: /spec/storageClassName
