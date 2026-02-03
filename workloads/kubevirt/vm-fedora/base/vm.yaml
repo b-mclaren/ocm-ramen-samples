@@ -40,7 +40,7 @@ spec:
       volumes:
         - name: root-disk
           persistentVolumeClaim:
-            claimName: root-disk
+            claimName: fedora-root-disk
         - name: cloud-init
           cloudInitNoCloud:
             userData: |
