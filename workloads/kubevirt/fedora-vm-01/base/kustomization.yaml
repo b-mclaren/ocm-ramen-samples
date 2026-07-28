@@ -1,4 +1,5 @@
 ---
+namespace: regional-dr-demo-01
 resources:
   - source.yaml
   - pvc.yaml
