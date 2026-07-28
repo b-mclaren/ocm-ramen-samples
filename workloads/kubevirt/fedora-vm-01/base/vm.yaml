@@ -1,0 +1,51 @@
+# PVC based test vm.
+---
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: fedora-dr-demo-01
+spec:
+  running: true
+  template:
+    metadata:
+      labels:
+        kubevirt.io/size: small
+        kubevirt.io/domain: vm
+    spec:
+      domain:
+        devices:
+          disks:
+            - name: root-disk
+              disk:
+                bus: virtio
+            - name: cloud-init
+              disk:
+                bus: virtio
+          interfaces:
+            - name: default
+              model: virtio
+        resources:
+          requests:
+            memory: 2Gi
+      networks:
+        - name: default
+          pod: {}
+      accessCredentials:
+        - sshPublicKey:
+            source:
+              secret:
+                secretName: my-public-key
+            propagationMethod:
+              configDrive: {}
+      volumes:
+        - name: root-disk
+          persistentVolumeClaim:
+            claimName: fedora-demo-01
+        - name: cloud-init
+          cloudInitConfigDrive:
+            userData: |
+              #cloud-config
+              user: fedora
+              password: regionalDR
+              chpasswd: { expire: False }
+              ssh_pwauth: True
